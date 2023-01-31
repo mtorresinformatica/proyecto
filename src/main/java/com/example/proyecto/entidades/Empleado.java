@@ -19,12 +19,17 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Clase que representa a un empleado.
  *
  */
 @Entity
 @Table(name = "empleados")
+@Data  @NoArgsConstructor
 public class Empleado implements Serializable {
 	
 	/**
@@ -68,12 +73,6 @@ public class Empleado implements Serializable {
 		inverseJoinColumns = @JoinColumn(name = "proyecto_id"))
 	private List<Proyecto> proyectos;
 	
-	/**
-	 * Constructor principal.
-	 */
-	public Empleado() {
-		super();
-	}
 	
 	/**
 	 * Constructor completo
@@ -105,92 +104,6 @@ public class Empleado implements Serializable {
 		this.proyectos = proyectos;
 	}
 	
-	/**
-	 * Get dni.
-	 * @return dni
-	 */
-	public String getDni() {
-		return dni;
-	}
-	
-	/**
-	 * Set dni
-	 * @param dni dni
-	 */
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	
-	/**
-	 * Get nombre
-	 * @return nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-	/**
-	 * Set nombre
-	 * @param nombre nombre
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	/**
-	 * Get apellido
-	 * @return apellido
-	 */
-	public String getApellido() {
-		return apellido;
-	}
-	
-	/**
-	 * Set apellido
-	 * @param apellido apellido
-	 */
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-	
-	/**
-	 * Get fechaNacimiento
-	 * @return fechaNacimiento
-	 */
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-	
-	/**
-	 * Set fechaNacimiento
-	 * @param fechaNacimiento fechaNacimiento
-	 */
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-	
-	/**
-	 * Get proyectos
-	 * @return proyectos
-	 */
-	public List<Proyecto> getProyectos() {
-		return proyectos;
-	}
-
-	/**
-	 * Set proyectos
-	 * @param proyectos proyectos
-	 */
-	public void setProyectos(List<Proyecto> proyectos) {
-		this.proyectos = proyectos;
-	}
-	
-	/**
-	 * toString() with concadenate
-	 */
-	@Override
-	public String toString() {
-		return "Empleado [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", proyectos=" + proyectos + "]";
-	}
 
 	private static final long serialVersionUID = 1L;
 }

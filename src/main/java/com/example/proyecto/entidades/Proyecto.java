@@ -1,5 +1,6 @@
 package com.example.proyecto.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,14 +19,21 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 /**
  * Clase que representa a un proyecto.
  *
  */
 @Entity
 @Table(name = "proyectos")
-public class Proyecto {
+@Data @NoArgsConstructor
+public class Proyecto implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * La ID del proyecto. Se genera por el motor de la base de datos.
 	 */
@@ -74,12 +82,6 @@ public class Proyecto {
 		inverseJoinColumns = @JoinColumn(name = "empleado_dni"))
 	private List<Empleado> empleados;
 	
-	/**
-	 * Constructor básico.
-	 */
-	public Proyecto() {
-		super();
-	}
 	
 	/**
 	 * Constructor completo.
@@ -112,102 +114,5 @@ public class Proyecto {
 		this.empleados = integrantes;
 	}
 
-	/**
-	 * Get id
-	 * @return id
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * Set id
-	 * @param id id
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * Get titulo
-	 * @return titulo
-	 */
-	public String getTitulo() {
-		return titulo;
-	}
-
-	/**
-	 * Set titulo
-	 * @param titulo titulo
-	 */
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	/**
-	 * Get empleados
-	 * @return empleados
-	 */
-	public List<Empleado> getEmpleados() {
-		return empleados;
-	}
-
-	/**
-	 * Set empleados
-	 * @param empleados empleados
-	 */
-	public void setEmpleados(List<Empleado> empleados) {
-		this.empleados = empleados;
-	}
-
-	/**
-	 * Get fechaInicio
-	 * @return fechaInicio
-	 */
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	/**
-	 * Set fechaInicio
-	 * @param fechaInicio fechaInicio
-	 */
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	/**
-	 * Get fechaFin
-	 * @return fechaFin
-	 */
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
-	/**
-	 * Set fechaFin
-	 * @param fechaFin fechaFin
-	 */
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-	/**
-	 * Get descripcion
-	 * @return descripcion
-	 */
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	/**
-	 * Get descripcion
-	 * @param descripcion descripcion
-	 */
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	
-	
 	
 }
